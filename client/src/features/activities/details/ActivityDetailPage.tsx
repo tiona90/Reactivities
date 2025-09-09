@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router";
 import { useNavigate } from "react-router";
 import { useActivities } from "../../../lib/hooks/useActivities";
 
-export default function ActivityDetail() {
+export default function ActivityDetailPage() {
     const navigate = useNavigate();
     const { id } = useParams();
     const { activity, isLoadingActivity } = useActivities(id);
