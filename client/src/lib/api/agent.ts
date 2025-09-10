@@ -40,7 +40,7 @@ agent.interceptors.response.use(
                     }
                     throw modelStateErrors.flat();
                 } else {
-                    toast.error(data.title);
+                    toast.error(data);
                 }
                 break;
             case 401:
