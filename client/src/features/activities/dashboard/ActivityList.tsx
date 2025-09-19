@@ -1,14 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ActivityCard from "./ActivityCard";
 import { useActivities } from "../../../lib/hooks/useActivities";
-import Typography from "@mui/material/Typography";
-
-
 
 export default function ActivityList() {
-    const { activities, isPending } = useActivities();
+    const { activities, isLoading } = useActivities();
 
-    if (!activities || isPending) return <Typography>Loading...</Typography>
+    if (isLoading) return <Typography>Loading...</Typography>
+
+    if (!activities) return <Typography>No activities found</Typography>
+
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {activities.map(activity => (
