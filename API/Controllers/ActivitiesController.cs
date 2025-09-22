@@ -14,7 +14,7 @@ public class ActivitiesController : BaseApiController
 {
 
     [HttpGet]
-    public async Task<ActionResult<List<Activity>>> GetActivities()
+    public async Task<ActionResult<List<ActivityDto>>> GetActivities()
     {
         return await Mediator.Send(new GetActivityList.Query());
     }
@@ -30,12 +30,17 @@ public class ActivitiesController : BaseApiController
     {
         return HandleResult(await Mediator.Send(new CreateActivity.Command { ActivityDto = activityDto }));
     }
-    [HttpPut]
-    public async Task<IActionResult> EditActivity(EditActivityDto activity)
+
+    [HttpPut("{id}")]
+    [Authorize(Policy = "IsActivityHost")]
+    public async Task<ActionResult> EditActivity(string id, EditActivityDto activity)
     {
+        activity.Id = id;
         return HandleResult(await Mediator.Send(new EditActivity.Command { ActivityDto = activity }));
     }
+
     [HttpDelete("{id}")]
+    [Authorize(Policy = "IsActivityHost")]
     public async Task<ActionResult> DeleteActivity(string id)
     {
         return HandleResult(await Mediator.Send(new DeleteActivity.Command { Id = id }));

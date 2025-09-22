@@ -21,12 +21,15 @@ public class EditActivity
         {
             var activity = await context.Activities
                 .FindAsync([request.ActivityDto.Id], cancellationToken);
+
             if (activity == null) return Result<Unit>.Failure("Activity not found", 404);
+
             mapper.Map(request.ActivityDto, activity);
 
             var result = await context.SaveChangesAsync(cancellationToken) > 0;
 
-            if (!result) return Result<Unit>.Failure("Failed to update activity", 400);
+            if (!result) return Result<Unit>.Failure("Failed to update the activity", 400);
+
             return Result<Unit>.Success(Unit.Value);
         }
     }
