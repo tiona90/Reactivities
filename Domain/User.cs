@@ -1,4 +1,4 @@
-
+using System;
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain;
@@ -11,4 +11,5 @@ public class User : IdentityUser
 
     // nav properties
     public ICollection<ActivityAttendee> Activities { get; set; } = [];
+    public ICollection<Photo> Photos { get; set; } = [];
 }
