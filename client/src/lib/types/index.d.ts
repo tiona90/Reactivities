@@ -16,6 +16,7 @@ type Activity = {
     hostDisplayName: string
     hostImageUrl: string
 }
+
 type Profile = {
     id: string
     displayName: string
@@ -35,6 +36,15 @@ type User = {
     imageUrl?: string
 }
 
+type ChatComment = {
+    id: string
+    createdAt: Date
+    body: string
+    userId: string
+    displayName: string
+    imageUrl?: string
+}
+
 type LocationIQSuggestion = {
     place_id: string
     osm_id: string
@@ -48,7 +58,7 @@ type LocationIQSuggestion = {
     display_name: string
     display_place: string
     display_address: string
-    address: AddressIQAddress
+    address: LocationIQAddress
 }
 
 type LocationIQAddress = {
