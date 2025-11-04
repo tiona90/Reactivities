@@ -3,9 +3,7 @@ import NavBar from "./NavBar";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
 import HomePage from "../../features/home/HomePage";
 
-
 function App() {
-
   const location = useLocation();
 
   return (
@@ -15,13 +13,12 @@ function App() {
       {location.pathname === '/' ? <HomePage /> : (
         <>
           <NavBar />
-          <Container maxWidth='xl' sx={{ mt: 3 }}>
+          <Container maxWidth='xl' sx={{ pt: 14 }}>
             <Outlet />
           </Container>
         </>
       )}
     </Box>
-
   )
 }
 
